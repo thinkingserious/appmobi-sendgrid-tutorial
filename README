@@ -44,4 +44,6 @@ For the SMS alert to be sent when a link is clicked in your email, you will need
 
 ![Webhook](./readme-images/webhook.png "Development Icon")
 
-You can find the code for the webhook in the webhook directory.
+You can find the code for the webhook in the webhook directory. This code is places at the link you specified above.
+
+.

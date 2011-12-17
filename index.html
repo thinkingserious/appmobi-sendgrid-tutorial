@@ -1,113 +1,110 @@
 <!DOCTYPE html><!--HTML5 doctype-->
 <html>
 <head>
-  <title>AppMobi - SendGrid Tutorial</title>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>AppMobi - SendGrid Tutorial</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
-  <!-- This app was developed using the appMobi JavaScript library and appMobi aUX (appMobi User Experience) Frameworks. -->
+	<!-- This app was developed using the appMobi JavaScript library and appMobi aUX (appMobi User Experience) Frameworks. -->
 
-  <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script> 
-  <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script> 
+	<script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script> 
+	<script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script> 
 
-  <!-- The appMobi aUX libraries are highly optimized for use with mobile development by providing you with the most commonly used functionality.  This allows for a smaller sized library to be included in your app than some alternatives.  The aUX User Interface JS Library provides an easy to use UI framework. The appMobi aUX_web HTML5 Toolkit is a helper library which allows enhancement of your mobile web apps and appMobi apps with native like performance for items such as carousel, scroller, swipeListener, select, password, and CSS animations.  -->
+	<!-- The appMobi aUX libraries are highly optimized for use with mobile development by providing you with the most commonly used functionality.  This allows for a smaller sized library to be included in your app than some alternatives.  The aUX User Interface JS Library provides an easy to use UI framework. The appMobi aUX_web HTML5 Toolkit is a helper library which allows enhancement of your mobile web apps and appMobi apps with native like performance for items such as carousel, scroller, swipeListener, select, password, and CSS animations.  -->
 
-  <script src="aUX_ui.min.js"></script>
-  <script src="aUX_web.all.min.js"></script>
+	<script src="aUX_ui.min.js"></script>
+	<script src="aUX_web.all.min.js"></script>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="sendgrid.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script src="sendgrid.js"></script>
 
-  <script type="text/javascript">
-  	/* This function runs once the page is loaded, but appMobi is not yet active */
-  	var init = function() {};
-  	window.addEventListener("load", init, false);
+	<script type="text/javascript">
+		/* This function runs once the page is loaded, but appMobi is not yet active */
+		var init = function() {};
+		window.addEventListener("load", init, false);
 
-  	/* This code prevents users from dragging the page */
-  	var preventDefaultScroll = function(event) {
-  		event.preventDefault();
-  		window.scroll(0, 0);
-  		return false;
-  	};
-  	document.addEventListener('touchmove', preventDefaultScroll, false);
+		/* This code prevents users from dragging the page */
+		var preventDefaultScroll = function(event) {
+			event.preventDefault();
+			window.scroll(0, 0);
+			return false;
+		};
+		document.addEventListener('touchmove', preventDefaultScroll, false);
 
-  	/* This code is used to run as soon as appMobi activates */
-  	var AMUi="";
-  	var onDeviceReady = function() {
-  		AppMobi.display.useViewport(320,480);
+		/* This code is used to run as soon as appMobi activates */
+		var AMUi="";
+		var onDeviceReady = function() {
+			AppMobi.display.useViewport(320,480);
+			//Use the appMobi UI
+			AMUi=new aUX.ui();
+			AMUi.backButtonText="Back";
+			check_keys();
+			AppMobi.device.hideSplashScreen();
 
-  		//Use the appMobi UI
-  		AMUi=new aUX.ui();
-  		AMUi.backButtonText="Back";
+	};
+	document.addEventListener("appMobi.device.ready", onDeviceReady, false);
 
-  		check_keys();
+	</script>
 
-  		AppMobi.device.hideSplashScreen();
-
-  	};
-  	document.addEventListener("appMobi.device.ready", onDeviceReady, false);
-
-  </script>
-
-  <link rel="stylesheet" type="text/css" href="aUX_ui.css" /> 
-  <link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="aUX_ui.css" /> 
+	<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
   
 	<div title="Main Menu" id="main" class="panel" selected="true">
-	  
-	  <div>
+
+		<div>
 			<img src="images/sendgrid.png" style="margin-top:7px;"/>
 		</div>
-	  
-	  <p>The SendGrid API allows you to send/receive emails and access powerful analytics.</p>
+
+		<p>The SendGrid API allows you to send/receive emails and access powerful analytics.</p>
 
 		<p>Visit <a href="https://sendgrid.com/user/signup" target="_blank">SendGrid.com</a> to get your free account today.</p>
-		
+
 		<p>Use the menu below to get started with this demo.</p>
-	  
-	  <ul>
-	  <li><a href="#send" onclick="clearEmail();">Send Email</a></li>  
-	  <li><a href="#status" onclick="showStatus();">Check Status</a></li>
-	  </ul>
-		
+
+		<ul>
+			<li><a href="#send" onclick="clearEmail();">Send Email</a></li>  
+			<li><a href="#status" onclick="showStatus();">Check Status</a></li>
+		</ul>
+
 	</div><!-- main panel -->
-	
+
 	<div title="Send Email" id="send" class="panel">
 
-    <div id="flash"></div>
+		<div id="flash"></div>
 		
 		<p style="margin-bottom:0;padding-bottom:0;">
 		<table>
-		  <tr valign="top"><td>To:&nbsp;</td><td><input type="text" id="to" placeholder="to@domain.com"/></td></tr>
-		  <tr valign="top"><td>From:&nbsp;</td><td><input type="text" id="from" placeholder="from@domain.com"/></td></tr>
-		  <tr valign="top"><td>Subject:&nbsp;</td><td><input type="text" id="subject" placeholder="Subject"/></td></tr>
-		  <tr valign="top"><td>Message:&nbsp;</td><td><textarea id="message" placeholder="Your message."></textarea></td></tr>
+			<tr valign="top"><td>To:&nbsp;</td><td><input type="text" id="to" placeholder="to@domain.com"/></td></tr>
+			<tr valign="top"><td>From:&nbsp;</td><td><input type="text" id="from" placeholder="from@domain.com"/></td></tr>
+			<tr valign="top"><td>Subject:&nbsp;</td><td><input type="text" id="subject" placeholder="Subject"/></td></tr>
+			<tr valign="top"><td>Message:&nbsp;</td><td><textarea id="message" placeholder="Your message."></textarea></td></tr>
 		</table>
 		</p>
 		<p style="text-align:center;">
-		  <button id="btnUser" ontouchstart="sendEmail();">Send Email</button>
+			<button id="btnUser" ontouchstart="sendEmail();">Send Email</button>
 		</p>
-  
-    <!-- Error output goes here -->
+
+		<!-- Error output goes here -->
 		<div id="output">
 			<div class="output-inner" id="sendgrid-output" style="display:none;"></div>
 		</div> <!-- Error output -->
-		
+
 	</div><!-- send panel -->
-	
+
 	<div title="Status" id="status" class="panel">
-	  
-	  <div>
+
+		<div>
 			<img src="images/sendgrid.png" style="margin-top:7px;"/>
 		</div>
-		
+
 		<div id="statustext"></div>
-		
+
 		<p style="text-align:center;">
-		  <button id="btnUser" ontouchstart="showStatus();">Refresh</button>
+			<button id="btnUser" ontouchstart="showStatus();">Refresh</button>
 		</p>
-	
+
 	</div><!-- status panel -->
-	
+
 </body>
 </html>

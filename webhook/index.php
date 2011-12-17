@@ -34,6 +34,7 @@ $client = new Services_Twilio($AccountSid, $AuthToken);
 $from = "XXXXXXXXXX";
 $to = "XXXXXXXXXX";
 $body = $_POST['url']." clicked by ".$_POST['email'].".";
+// TODO: Use string to time or the date function to decode the time stamp
 
 // Send a new outgoing SMS */
 $client->account->sms_messages->create($from, $to, $body);

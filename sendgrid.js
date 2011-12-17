@@ -9,7 +9,7 @@ function clearEmail()
 
 // Send an email via SendGrid using the Web API
 function sendEmail()
-{	
+{
 	var to = $('#to').val();
 	var from = $('#from').val();
 	var subject = $('#subject').val();
@@ -25,7 +25,7 @@ function sendEmail()
 function emailSent(rawPayload)
 {
 	var data = $.parseJSON(rawPayload);
-	
+
 	if (data.message == "success") {
 		$("#flash").show();
 		$('#flash').addClass('green');
@@ -41,7 +41,7 @@ function emailSent(rawPayload)
 // Get today's SendGrid statistics
 function showStatus()
 {
-	var url = 'https://sendgrid.com/api/stats.get.json?api_user=' + api_user + '&api_key=' + api_key + '&days=0'; 
+	var url = 'https://sendgrid.com/api/stats.get.json?api_user=' + api_user + '&api_key=' + api_key + '&days=0';
 	AppMobi.device.getRemoteData(url,"GET","","todaysStatus","displayFlashMessage");
 }
 
@@ -50,14 +50,12 @@ function todaysStatus(rawPayload)
 {
 	var data = $.parseJSON(rawPayload);
 	$("#statustext").show();
-	$("#statustext").html('<p>Emails sent: ' + data[0].requests + '</br>' + 
-												'<p>Emails delivered: ' + data[0].delivered + '</br>' + 
-												'<p>Clicks: ' + data[0].clicks + '</br>');
+	$("#statustext").html('<p>Emails sent: ' + data[0].requests + '</br>' + '<p>Emails delivered: ' + data[0].delivered + '</br>' + '<p>Clicks: ' + data[0].clicks + '</br>');
 }
 
 function displayFlashMessage (rawPayload) 
-{ 	
-    $('#flash').show();
-    $('#flash').addClass('red');
-    $('#flash').html("<p class='center green'>Ack! Something went wrong!</p>");
+{
+	$('#flash').show();
+	$('#flash').addClass('red');
+	$('#flash').html("<p class='center green'>Ack! Something went wrong!</p>");
 }
