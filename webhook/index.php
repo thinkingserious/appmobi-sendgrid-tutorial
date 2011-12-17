@@ -23,7 +23,7 @@ if ( $fh )
 }
 //***** End debug
 
-// set your AccountSid and AuthToken - from www.twilio.com/user/account
+// Set your AccountSid and AuthToken - from www.twilio.com/user/account
 $AccountSid = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 $AuthToken = "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY";
 

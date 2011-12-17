@@ -1,3 +1,4 @@
+// Update with your SendGrid credentials - http://www.SendGrid.com/pricing.html
 var api_user = 'XXXXXX';
 var api_key = 'XXXXXX';
 
