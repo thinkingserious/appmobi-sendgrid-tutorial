@@ -26,7 +26,7 @@ Now you should see a screen similar to:
 
 ![New Blank Project](./readme-images/new-blank-project.png "New Blank Project")
 
-# Code! #
+## Code! ##
 
 Click the Development icon to jump to the folder where your code will be stored.
 
@@ -38,7 +38,7 @@ Note that if you jump up two directories, you will find a ton of sample code to 
 
 Copying this code into your AppMobi directory should produce a working solution for you, which is demonstrated in the video below. Note that you will need to replace the SendGrid and Twilio credentials.
 
-# Setup 'SMS on Link Click' Functionality #
+## Setup 'SMS on Link Click' Functionality ##
 
 For the SMS alert to be sent when a link is clicked in your email, you will need to setup the webhook [here](http://sendgrid.com/app/appSettings/type/eventnotify/id/15).
 
