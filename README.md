@@ -42,8 +42,6 @@ Copying this code into your AppMobi directory should produce a working solution 
 
 For the SMS alert to be sent when a link is clicked in your email, you will need to setup the webhook [here](http://sendgrid.com/app/appSettings/type/eventnotify/id/15).
 
-![Webhook](./readme-images/webhook.png "Development Icon")
+![Webhook](http://github.com/thinkingserious/appmobi-sendgrid-tutorial/raw/master/readme-images/webhook.png "Development Icon")
 
 You can find the code for the webhook in the webhook directory. This code is placed at the link you specified above.
-
-.
