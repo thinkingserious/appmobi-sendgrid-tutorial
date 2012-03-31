@@ -14,7 +14,7 @@ Once you have completed the above, you are ready to begin.
 
 Click Start New to get started.
 
-![Start New](./readme-images/start-new.png "Start New")
+![Start New](http://github.com/thinkingserious/appmobi-sendgrid-tutorial/raw/master/readme-images/start-new.png "Start New")
 
 Choose the Client-Side project.
 
